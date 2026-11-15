@@ -40,6 +40,7 @@ In the VS Code terminal (PowerShell), navigate to the folder containing `package
 
 ```powershell
 npm install
+Copy-Item .env.example .env
 npm run dev
 ```
 
@@ -49,7 +50,7 @@ If setting up the project manually from an empty folder, the initial commands ar
 mkdir fitnest-gym
 cd fitnest-gym
 npm init -y
-npm install express sqlite3 sqlite
+npm install express sqlite3 sqlite dotenv
 npm install --save-dev nodemon
 ```
 
@@ -61,7 +62,7 @@ For a normal run without automatic restarts:
 npm start
 ```
 
-The API listens at `http://localhost:3000` by default. The root URL returns JSON describing the available API resources. Use `/members`, `/lockers`, or `/allotments` for API requests. To use another port, set the `PORT` environment variable before starting the server.
+The API listens at `https://fitnest-gym-psi.vercel.app/` by default. The root URL returns JSON describing the available API resources. Use `/members`, `/lockers`, or `/allotments` for API requests. Configure the port in `.env` (for example, `PORT=3001`) or set the `PORT` environment variable before starting the server. `.env` is ignored by Git; `.env.example` documents the available setting.
 
 The first start creates the database and seeds 5 members, 12 lockers, and 4 allotments. The seed uses stable IDs and `INSERT OR IGNORE`, so restarting does not duplicate the sample records.
 

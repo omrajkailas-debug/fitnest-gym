@@ -1,4 +1,5 @@
 node_modules/
+.env
 fitnestGym.db
 fitnestGym.db-shm
 fitnestGym.db-wal

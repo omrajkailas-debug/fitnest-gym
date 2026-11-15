@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const { openDatabase } = require("./database");
 const memberRoutes = require("./routes/memberRoutes");
