@@ -1,0 +1,19 @@
+{
+  "name": "fitnest-gym",
+  "version": "1.0.0",
+  "description": "Beginner-friendly gym locker management REST API using Express and SQLite",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "db:verify": "node scripts/verifyDatabase.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

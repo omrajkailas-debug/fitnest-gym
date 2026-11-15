@@ -1,0 +1,4 @@
+node_modules/
+fitnestGym.db
+fitnestGym.db-shm
+fitnestGym.db-wal
