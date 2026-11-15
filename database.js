@@ -1,8 +1,11 @@
 const path = require("path");
+const os = require("os");
 const sqlite3 = require("sqlite3");
 const { open } = require("sqlite");
 
-const databasePath = path.join(__dirname, "fitnestGym.db");
+const databasePath = process.env.VERCEL
+  ? path.join(os.tmpdir(), "fitnestGym.db")
+  : path.join(__dirname, "fitnestGym.db");
 let database;
 
 async function openDatabase() {

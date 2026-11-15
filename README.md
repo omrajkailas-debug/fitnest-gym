@@ -20,6 +20,7 @@ The relationships are:
 fitnest-gym/
 ├── app.js
 ├── database.js
+├── .env.example
 ├── package.json
 ├── utils.js
 ├── README.md
@@ -62,7 +63,9 @@ For a normal run without automatic restarts:
 npm start
 ```
 
-The API listens at `https://fitnest-gym-psi.vercel.app/` by default. The root URL returns JSON describing the available API resources. Use `/members`, `/lockers`, or `/allotments` for API requests. Configure the port in `.env` (for example, `PORT=3001`) or set the `PORT` environment variable before starting the server. `.env` is ignored by Git; `.env.example` documents the available setting.
+Locally, the API listens at `http://localhost:3000` by default. The root URL returns JSON describing the available API resources. Use `/members`, `/lockers`, or `/allotments` for API requests. Configure the port in `.env` (for example, `PORT=3001`) or set the `PORT` environment variable before starting the server. `.env` is ignored by Git; `.env.example` documents the available setting.
+
+The deployed API is available at `https://fitnest-gym-psi.vercel.app/`. Vercel initializes the SQLite database for requests using its temporary `/tmp` directory. This is suitable for the seeded demo data, but changes made through the API are not durable across instance restarts or redeployments. Use a hosted database for persistent production data.
 
 The first start creates the database and seeds 5 members, 12 lockers, and 4 allotments. The seed uses stable IDs and `INSERT OR IGNORE`, so restarting does not duplicate the sample records.
 

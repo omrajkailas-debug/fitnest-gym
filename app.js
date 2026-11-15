@@ -8,6 +8,18 @@ const allotmentRoutes = require("./routes/allotmentRoutes");
 const { HttpError } = require("./utils");
 
 const app = express();
+let databaseReady;
+
+app.use((req, res, next) => {
+  if (!databaseReady) {
+    databaseReady = openDatabase().catch((error) => {
+      databaseReady = null;
+      throw error;
+    });
+  }
+  databaseReady.then(() => next(), next);
+});
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -71,4 +83,6 @@ if (require.main === module) {
   initializeDBAndServer();
 }
 
-module.exports = { app, initializeDBAndServer };
+module.exports = app;
+module.exports.app = app;
+module.exports.initializeDBAndServer = initializeDBAndServer;
